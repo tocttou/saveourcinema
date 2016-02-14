@@ -13,6 +13,7 @@
 
   <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"></script>
   <script>
   $(document)
     .ready(function() {
@@ -40,7 +41,16 @@
     })
   ;
   </script>
-
+  <script>
+    var btn = document.getElementById('copy-button');
+    var clipboard = new Clipboard(btn);
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+  </script>
   <style type="text/css">
 
   body {
@@ -156,6 +166,7 @@
     </div>
     <div class="ui segment">
       <h2 class="ui left floated header">Email Content</h2>
+      <div class="ui right floated small button" data-clipboard-target="#email-body" id="copy-button">Copy Email</div>
       <div class="ui clearing divider"></div>
         <div class="ui message" id="email-body">
           <u><strong>Dear Committee members,</strong></u>
